@@ -9,6 +9,7 @@
         border-radius: 20px;
         padding: 15px 30px;
         box-sizing: border-box;
+        width: 100%;
     }
     input:hover{
         border: 2px solid $font-color;
@@ -19,7 +20,7 @@
     .search-icon{
         position: absolute;
         right: 20px;
-        top: 11px;
+        top: 15px;
     }
 }
 

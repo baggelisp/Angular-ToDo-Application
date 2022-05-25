@@ -1,4 +1,12 @@
-<h1 mat-dialog-title>Create / Edit</h1>
+<h1 mat-dialog-title>{{mode==='create' ? 'Create' : 'Edit'}}</h1>
 <div mat-dialog-content>
-  To do
+ 
+  <div class="input-container m-top-20px">
+    <input [(ngModel)]="newToDo.title" #new="ngModel" class="" type="text" placeholder="Add item..." name="new">
+  </div>
+
 </div>
+<mat-dialog-actions align="end">
+  <button class="dialog-button" mat-button mat-dialog-close>Cancel</button>
+  <button class="dialog-button" mat-button [mat-dialog-close]="newToDo" cdkFocusInitial>{{mode==='create' ? 'Create' : 'Edit'}}</button>
+</mat-dialog-actions>

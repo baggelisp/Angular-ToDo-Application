@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToDoInt } from 'src/app/models/interfaces';
 
@@ -9,10 +9,23 @@ import { ToDoInt } from 'src/app/models/interfaces';
 })
 export class ToDoModalComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public toDoInput: ToDoInt) { }
+  mode: 'edit' | 'create' = 'create'
+  newToDo: ToDoInt;
+  @Output() emitOnCreate = new EventEmitter<ToDoInt>();
+
+  constructor(@Inject(MAT_DIALOG_DATA) public toDoInput: ToDoInt) { 
+    this.newToDo = {
+      userId: toDoInput.userId || 1,
+      title: toDoInput.title || '',
+      completed: toDoInput.completed || false,
+    };
+    if (toDoInput.id) this.newToDo['id'] = toDoInput.id;
+  }
 
   ngOnInit(): void {
-    console.log(this.toDoInput)
+    if (this.toDoInput.id){
+      this.mode = 'edit';
+    } 
   }
 
 }

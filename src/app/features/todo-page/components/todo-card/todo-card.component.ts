@@ -28,7 +28,6 @@ export class TodoCardComponent implements OnInit {
   }
 
   onComplete(){
-    console.log('comple')
     this.emitOnComplete.emit(this.toDoInput);
   }
 

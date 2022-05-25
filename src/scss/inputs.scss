@@ -1,12 +1,16 @@
+@import './colors.scss';
+
 input{
-    color: #1d1160!important;
-    width: 100%;
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: 0;
+    background: $background;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 15px 30px;
+    box-sizing: border-box;
+}
+input:hover{
+    border: 2px solid $font-color;
 }
 
-input:focus, input:active {
+input:active, input:focus {
     outline: none;
-    border: none;
 }
