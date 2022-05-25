@@ -29,4 +29,7 @@ export class TodoPageComponent implements OnInit {
     });
   }
 
+  onSearchInputChange(search: string){
+    console.log(search)
+  }
 }

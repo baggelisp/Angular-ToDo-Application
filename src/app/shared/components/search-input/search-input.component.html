@@ -1,0 +1,8 @@
+<div class="search-wp">
+    <input minlength="3" [(ngModel)]="inputValue" #search="ngModel" class="" (input)="changeInput(search.errors, $event)" type="text" placeholder="Search..." name="search">
+    <mat-icon class="search-icon" aria-hidden="false">search</mat-icon>
+</div>
+<div class="alerts">
+<span style="color:red" *ngIf="inputValue.length < 3 && (search.dirty || search.touched)">
+    Search must be at least 3 characters
+</span>

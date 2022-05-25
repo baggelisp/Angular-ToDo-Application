@@ -2,6 +2,9 @@
     <div class="new-container">
         <button (click)="openCreateModal()" class="default-button" >CREATE <mat-icon style="margin-left: 5px;">add</mat-icon> </button>
     </div>
+    <div class="search-container">
+        <app-search-input (onChangeValue)="onSearchInputChange($event)"></app-search-input>
+    </div>
     <div *ngFor="let item of (service.toDos$ | async)">
         <app-todo-card [toDoInput]="item" ></app-todo-card>
     </div>
