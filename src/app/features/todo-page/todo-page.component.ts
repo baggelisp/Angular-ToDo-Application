@@ -17,7 +17,7 @@ export class TodoPageComponent implements OnInit {
 
   }
 
-  openDialog() {
+  openCreateModal() {
     this.dialog.open(ToDoModalComponent, {
       data:   {
         "userId": 1,

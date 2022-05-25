@@ -8,18 +8,22 @@ import { TodoPageService } from './todo-page.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TodoCardComponent } from './components/todo-card/todo-card.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
   declarations: [
-    TodoPageComponent
+    TodoPageComponent,
+    TodoCardComponent
   ],
   imports: [
     CommonModule,
     TodoPageRoutingModule,
     HttpClientModule,
     NgxSpinnerModule,
-    SharedModule
+    SharedModule,
+    MatCheckboxModule
   ],
   providers: [
     TodoPageApi,

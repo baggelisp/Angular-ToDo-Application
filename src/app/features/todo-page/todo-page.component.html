@@ -1,18 +1,10 @@
 <div class="todo-page-container">
-
+    <div class="new-container">
+        <button (click)="openCreateModal()" class="default-button" >CREATE <mat-icon style="margin-left: 5px;">add</mat-icon> </button>
+    </div>
+    <div *ngFor="let item of (service.toDos$ | async)">
+        <app-todo-card [toDoInput]="item" ></app-todo-card>
+    </div>
 </div>
-
-<p>todo-page works!</p>
-
-
-<button (click)="openDialog()">Open dialog</button>
-
-
-<div *ngFor="let item of (service.toDos$ | async)">
-    {{ item | json }}
-
-</div>
-
-
 
 <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "default" color = "#fff" type = "square-loader" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
