@@ -13,4 +13,16 @@ export class TodoPageApi {
 		return this.http.get<ToDoInt[]>(`${environment.apiUrl}/todos`);
   }
 
+  createToDo(toDo: ToDoInt) {
+    return this.http.post<ToDoInt>(`${environment.apiUrl}/todos` , toDo);
+  }
+
+  updateToDo(toDo: ToDoInt) {
+    return this.http.put<ToDoInt>(`${environment.apiUrl}/todos/${toDo.id}` , toDo);
+  }
+  
+  deleteToDo(toDo: ToDoInt) {
+    return this.http.delete<ToDoInt>(`${environment.apiUrl}/todos/${toDo.id}`);
+  }
+
 }

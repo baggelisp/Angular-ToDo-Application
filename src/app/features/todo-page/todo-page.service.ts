@@ -17,6 +17,7 @@ export class TodoPageService {
   }
 
   getToDos() {
+    this.spinner.show();
     this.api.getToDos().subscribe( (response:ToDoInt[]) => {
       this.spinner.hide();
       this.store.dispatch({ type: `GET_TODOS_SUCCESS`, payload: {results: [...response]}  }); 
@@ -26,4 +27,39 @@ export class TodoPageService {
       this.store.dispatch({ type: `TODOS_CLEAN_STATE`, payload: {}  }); 
     });
   }
+
+  createToDo(toDo: ToDoInt) {
+    this.spinner.show();
+    this.api.createToDo(toDo).subscribe( (response:ToDoInt) => {
+      this.spinner.hide();
+      this.store.dispatch({ type: `CREATE_TODO_SUCCESS`, payload: {newToDo: {...response}}  }); 
+    }, error => {
+      this.spinner.hide();
+      alert("There was an error creating element. Please try again later.");
+    });
+  }
+
+  updateToDo(toDo: ToDoInt) {
+    this.spinner.show();
+    this.api.updateToDo(toDo).subscribe( (response:ToDoInt) => {
+      this.spinner.hide();
+      this.store.dispatch({ type: `UPDATE_TODO_SUCCESS`, payload: {updateToDo: {...response}}  }); 
+    }, error => {
+      this.spinner.hide();
+      alert("There was an error updating element. Please try again later.");
+    });  
+  }
+  
+  deleteToDo(toDo: ToDoInt) {
+    this.spinner.show();
+    this.api.deleteToDo(toDo).subscribe( (response:ToDoInt) => {
+      this.spinner.hide();
+      this.store.dispatch({ type: `DELETE_TODO_SUCCESS`, payload: {id: toDo.id}  }); 
+    }, error => {
+      this.spinner.hide();
+      alert("There was an error updating element. Please try again later.");
+    }); 
+  }
+
+
 }

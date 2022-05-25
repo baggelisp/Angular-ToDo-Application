@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ToDoInt } from 'src/app/models/interfaces';
 import { ToDoModalComponent } from 'src/app/shared/components/to-do-modal/to-do-modal.component';
 import { TodoPageService } from './todo-page.service';
 
@@ -18,18 +19,25 @@ export class TodoPageComponent implements OnInit {
   }
 
   openCreateModal() {
-    this.dialog.open(ToDoModalComponent, {
-      data:   {
-        "userId": 1,
-        "id": 2,
-        "title": "quis ut nam facilis et officia qui",
-        "completed": false
-      },
-      width: '600px',
-    });
+
   }
 
   onSearchInputChange(search: string){
     console.log(search)
+  }
+
+  cardOnEdit(toDo: ToDoInt | any){
+    this.dialog.open(ToDoModalComponent, {
+      data:   {...toDo},
+      width: '600px',
+    });
+  }
+
+  cardOnDelete(toDo: ToDoInt | any){
+    this.service.deleteToDo(toDo);
+  }
+
+  cardOnComplete(toDo: ToDoInt | any) {
+    this.service.updateToDo({...toDo, completed: !toDo.completed});
   }
 }

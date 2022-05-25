@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToDoInt } from 'src/app/models/interfaces';
 
 @Component({
@@ -9,6 +9,10 @@ import { ToDoInt } from 'src/app/models/interfaces';
 export class TodoCardComponent implements OnInit {
 
   @Input() toDoInput?: ToDoInt; 
+  @Output() emitOnEdit = new EventEmitter<ToDoInt>();
+  @Output() emitOnDelete = new EventEmitter<ToDoInt>();
+  @Output() emitOnComplete = new EventEmitter<ToDoInt>();
+
 
   constructor() { }
 
@@ -16,17 +20,16 @@ export class TodoCardComponent implements OnInit {
   }
 
   onEdit(){
-    console.log(this.toDoInput)
+    this.emitOnEdit.emit(this.toDoInput);
   }
 
   onDelete(){
-    console.log(this.toDoInput)
-
+    this.emitOnDelete.emit(this.toDoInput);
   }
 
   onComplete(){
-    console.log(this.toDoInput)
-
+    console.log('comple')
+    this.emitOnComplete.emit(this.toDoInput);
   }
 
 }

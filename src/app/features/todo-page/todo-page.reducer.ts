@@ -20,6 +20,21 @@ export function toDosReducer(state = initialState, { type, payload }: ActionWith
         ...state,
         toDos: [...payload.results]
       }
+    case 'CREATE_TODO_SUCCESS':
+      return {
+        ...state,
+        toDos: [...state.toDos,...payload.newToDo]
+      }
+    case 'UPDATE_TODO_SUCCESS':
+      return {
+        ...state,
+        toDos: [...state.toDos.map( el => el.id === payload.updateToDo.id ? {...payload.updateToDo} : el)]
+      }
+    case 'DELETE_TODO_SUCCESS':
+      return {
+        ...state,
+        toDos: [...state.toDos.filter( el => el.id !== payload.id)]
+      }
     case 'TODOS_CLEAN_STATE':
       return {
         ...initialState
