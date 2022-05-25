@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subject, takeUntil } from 'rxjs';
+import { filter, map, Observable, Subject, takeUntil } from 'rxjs';
 import { ToDoInt } from 'src/app/models/interfaces';
 import { ToDoModalComponent } from 'src/app/shared/components/to-do-modal/to-do-modal.component';
 import { TodoPageService } from './todo-page.service';
@@ -13,8 +13,12 @@ import { TodoPageService } from './todo-page.service';
 export class TodoPageComponent implements OnInit {
 
   destroy: Subject<boolean> = new Subject<boolean>();
+  searchInput: string = '';
+  toDosFiltered$: Observable<ToDoInt[]>;
   
-  constructor(public dialog: MatDialog, public service: TodoPageService) { }
+  constructor(public dialog: MatDialog, public service: TodoPageService) {
+    this.toDosFiltered$ = this.service.toDos$;
+   }
 
   ngOnInit(): void {
     this.service.getToDos();
@@ -33,7 +37,10 @@ export class TodoPageComponent implements OnInit {
   }
 
   onSearchInputChange(search: string){
-    console.log(search)
+    this.searchInput = search;
+    this.toDosFiltered$ = this.service.toDos$.pipe (
+      map(items => 
+       items.filter((toDo:ToDoInt) => toDo.title.includes(this.searchInput))) )
   }
 
   cardOnEdit(toDo: ToDoInt | any){

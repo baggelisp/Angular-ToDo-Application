@@ -5,7 +5,7 @@
     <div class="search-container">
         <app-search-input (onChangeValue)="onSearchInputChange($event)"></app-search-input>
     </div>
-    <div *ngFor="let item of (service.toDos$ | async)">
+    <div *ngFor="let item of (toDosFiltered$ | async)">
         <app-todo-card 
         (emitOnEdit)="cardOnEdit($event)"
         (emitOnDelete)="cardOnDelete($event)"
