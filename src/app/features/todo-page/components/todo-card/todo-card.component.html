@@ -1,8 +1,20 @@
 <div class="card-container">
-    <div class="title">
-        {{toDoInput?.title}}
+    <div class="flex-start">
+        <div class="m-x-5px" (click)="onComplete()">
+            <mat-checkbox class="example-margin" [checked]="toDoInput?.completed"></mat-checkbox>
+        </div>
+        <div class="title m-x-5px">
+            {{toDoInput?.title}}
+        </div>
     </div>
-    <div>
-        <mat-checkbox class="example-margin" [checked]="toDoInput?.completed"></mat-checkbox>
+
+    <div class="flex-start">
+        <div class="m-x-5px cursor-pointer" (click)="onEdit()">
+            <mat-icon>edit</mat-icon>
+        </div>
+        <div class="m-x-10px cursor-pointer" (click)="onDelete()">
+            <mat-icon>delete</mat-icon>
+        </div>
     </div>
+
 </div>

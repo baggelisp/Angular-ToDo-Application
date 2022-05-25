@@ -15,4 +15,18 @@ export class TodoCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onEdit(){
+    console.log(this.toDoInput)
+  }
+
+  onDelete(){
+    console.log(this.toDoInput)
+
+  }
+
+  onComplete(){
+    console.log(this.toDoInput)
+
+  }
+
 }
