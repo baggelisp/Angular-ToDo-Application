@@ -5,6 +5,9 @@ import { TodoPageRoutingModule } from './todo-page-routing.module';
 import { TodoPageComponent } from './todo-page.component';
 import { TodoPageApi } from './todo-page.api';
 import { TodoPageService } from './todo-page.service';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +16,10 @@ import { TodoPageService } from './todo-page.service';
   ],
   imports: [
     CommonModule,
-    TodoPageRoutingModule
+    TodoPageRoutingModule,
+    HttpClientModule,
+    NgxSpinnerModule,
+    SharedModule
   ],
   providers: [
     TodoPageApi,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToDoModalComponent } from 'src/app/shared/components/to-do-modal/to-do-modal.component';
+import { TodoPageService } from './todo-page.service';
 
 @Component({
   selector: 'app-todo-page',
@@ -9,9 +10,11 @@ import { ToDoModalComponent } from 'src/app/shared/components/to-do-modal/to-do-
 })
 export class TodoPageComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, public service: TodoPageService) { }
 
   ngOnInit(): void {
+    this.service.getToDos();
+
   }
 
   openDialog() {

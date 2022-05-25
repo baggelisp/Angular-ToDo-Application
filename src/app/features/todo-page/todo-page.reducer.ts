@@ -20,7 +20,7 @@ export function toDosReducer(state = initialState, { type, payload }: ActionWith
         ...state,
         toDos: [...payload.results]
       }
-    case 'SEARCH_CLEAN_STATE':
+    case 'TODOS_CLEAN_STATE':
       return {
         ...initialState
       }
