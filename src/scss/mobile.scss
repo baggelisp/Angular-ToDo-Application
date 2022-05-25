@@ -1,0 +1,33 @@
+@media only screen and (max-width: 829px) {
+    .m-block{
+        display: block!important;
+    }
+    .m-mtop-20px{
+        margin-top: 20px;
+    }
+    .m-ptop-20px{
+        padding-top: 20px;
+    }
+    .m-show{
+        display: block;
+    }
+    .m-hide{
+        display: none;
+    }
+    .m-margin-0{
+        margin: 0!important;
+    }
+    .m-w-100{
+        width: 100%!important;
+    }
+    .m-obj-contain{
+        object-fit: contain;
+    }
+    .m-flex-wrap {
+        flex-wrap: wrap;
+    }
+    .m-p-x-0{
+        padding-left: 0!important;
+        padding-right: 0!important;
+    }
+}
